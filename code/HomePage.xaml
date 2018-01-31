@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.HomePage">
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Messages" Icon="message.png" Clicked="ProfileMenuItem_OnClicked" />
+    <ToolbarItem Text="My Profile" Order="Secondary" />
+    <ToolbarItem Text="My Account" Order="Secondary" />
+    <ToolbarItem Text="Sign Out" Order="Secondary" />
+  </ContentPage.ToolbarItems>
+  
+  <ScrollView>
+    <StackLayout Padding="5" BackgroundColor="#EAEAEA" >
+      <StackLayout Padding="5" BackgroundColor="White">
+        <Label Text="Statistics" TextColor="Gray" />
+
+        <StackLayout Orientation="Horizontal" >
+
+          <StackLayout Orientation="Horizontal" HeightRequest="50" >
+            <Image Source="Desert.jpg" WidthRequest="50" VerticalOptions="Center" />
+          </StackLayout>
+
+          <StackLayout VerticalOptions="Center" Padding="5" >
+            <StackLayout  >
+              <Label Text="ACTIVITY" HorizontalOptions="Center" FontSize="13" TextColor="Black" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" >
+              <StackLayout Orientation="Horizontal" HeightRequest="20" Padding="2" >
+                <Image Source="post_icon.png" WidthRequest="20" />
+                <Label Text="{Binding userPosts.total}" FontSize="13" TextColor="Black" />
+                <StackLayout.GestureRecognizers>
+                  <TapGestureRecognizer Tapped="PostsDoneRecognizer_OnTapped" />
+                </StackLayout.GestureRecognizers>
+              </StackLayout>
+
+              <StackLayout Orientation="Horizontal" HeightRequest="20" Padding="2" >
+                <Image Source="like_icon.png" WidthRequest="20" />
+                <Label Text="{Binding userLikedPosts.total}" FontSize="13" TextColor="Black" />
+                <StackLayout.GestureRecognizers>
+                  <TapGestureRecognizer Tapped="LikesDoneRecognizer_OnTapped" />
+                </StackLayout.GestureRecognizers>
+              </StackLayout>
+
+              <StackLayout Orientation="Horizontal" HeightRequest="20" Padding="2" >
+                <Image Source="reply_icon.png" WidthRequest="20" />
+                <Label Text="{Binding userComments.total}" FontSize="13" TextColor="Black" />
+                <StackLayout.GestureRecognizers>
+                  <TapGestureRecognizer Tapped="RepliesDoneRecognizer_OnTapped" />
+                </StackLayout.GestureRecognizers>
+              </StackLayout>
+            </StackLayout>
+
+          </StackLayout>
+
+          <StackLayout VerticalOptions="Center" Padding="5" >
+            <StackLayout >
+              <Label Text="GOT" HorizontalOptions="Center" FontSize="13" TextColor="Black" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" >
+              <StackLayout Orientation="Horizontal" HeightRequest="20" Padding="2" >
+                <Image Source="like_icon.png" WidthRequest="20" />
+                <Label Text="{Binding userPostsLiked.total}" FontSize="13" TextColor="Black" />
+                <StackLayout.GestureRecognizers>
+                  <TapGestureRecognizer Tapped="LikesGotRecognizer_OnTapped" />
+                </StackLayout.GestureRecognizers>
+              </StackLayout>
+
+              <StackLayout Orientation="Horizontal" HeightRequest="20" Padding="2" >
+                <Image Source="reply_icon.png" WidthRequest="20" />
+                <Label Text="{Binding userPostsCommented.total}" FontSize="13" TextColor="Black" />
+                <StackLayout.GestureRecognizers>
+                  <TapGestureRecognizer Tapped="RepliesGotRecognizer_OnTapped" />
+                </StackLayout.GestureRecognizers>
+              </StackLayout>
+            </StackLayout>
+          </StackLayout>
+        </StackLayout>
+      </StackLayout>
+
+
+      <StackLayout Padding="3"  >
+        <Label Text="News feed" />
+
+        <ListView x:Name="HomeListView" HasUnevenRows="True" >
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <StackLayout BackgroundColor="White">
+
+                  <StackLayout Orientation="Horizontal" Padding="5" >
+                    <StackLayout HeightRequest="50" Padding="5" >
+                      <Image Source="home_icon.png" WidthRequest="50" />
+                    </StackLayout>
+
+                    <StackLayout Padding="5">
+                      <Label Text="{Binding full_name}" Font="Bold" />
+                      <Label Text="{Binding description}" />
+
+                    </StackLayout>
+                  </StackLayout>
+
+                  <StackLayout Orientation="Horizontal" >
+                    <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center" Padding="20,5,0,5">
+                      <Label Text="{Binding date}" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" HeightRequest="20" VerticalOptions="Center" Padding="0,5,10,5">
+                      <Image Source="like_icon.png"  WidthRequest="20" />
+                      <Label Text="{Binding likes_no, StringFormat= '{0}'}" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" HeightRequest="20" VerticalOptions="Center" Padding="0,5,0,5">
+                      <Image Source="reply_icon.png"  WidthRequest="20" />
+                      <Label Text="{Binding comments_no, StringFormat= '{0}'}" />
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="EndAndExpand"></StackLayout>
+                  </StackLayout>
+
+                </StackLayout>
+
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+      </StackLayout>
+
+    </StackLayout>
+
+  </ScrollView>
+  
+</ContentPage>

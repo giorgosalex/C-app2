@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.UserPosts">
+
+  <ScrollView>
+    <StackLayout Padding="5" BackgroundColor="#EAEAEA" >
+
+      <StackLayout Padding="3"  >
+        <Label Text="News feed" />
+
+        <ListView x:Name="HomeListView" HasUnevenRows="True" >
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <StackLayout BackgroundColor="White">
+
+                  <StackLayout Orientation="Horizontal" Padding="5" >
+                    <StackLayout HeightRequest="50" Padding="5" >
+                      <Image Source="home_icon.png" WidthRequest="50" />
+                    </StackLayout>
+
+                    <StackLayout Padding="5">
+                      <Label Text="{Binding full_name}" Font="Bold" />
+                      <Label Text="{Binding description}" />
+                    </StackLayout>
+                  </StackLayout>
+
+                  <StackLayout Orientation="Horizontal" >
+                    <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center" Padding="20,5,0,5">
+                      <Label Text="{Binding date}" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" HeightRequest="20" VerticalOptions="Center" Padding="0,5,10,5">
+                      <Image Source="like_icon.png"  WidthRequest="20" />
+                      <Label Text="{Binding likes_no, StringFormat= '{0}'}" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" HeightRequest="20" VerticalOptions="Center" Padding="0,5,0,5">
+                      <Image Source="reply_icon.png"  WidthRequest="20" />
+                      <Label Text="{Binding comments_no, StringFormat= '{0}'}" />
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="EndAndExpand"></StackLayout>
+                  </StackLayout>
+
+                </StackLayout>
+
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+      </StackLayout>
+      
+    </StackLayout>
+  </ScrollView>
+</ContentPage>
